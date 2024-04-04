@@ -22,4 +22,8 @@ ja:
     new:
       page_title: '新しい本'
       back_to_books: '本一覧に戻る'
-     
+    show:
+      edit_this_book: '本を編集'
+      back_to_books: '本の一覧'
+      destroy_this_book: '本を削除'
+
