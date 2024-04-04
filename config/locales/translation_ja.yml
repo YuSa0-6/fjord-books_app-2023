@@ -9,3 +9,13 @@ ja:
         memo: メモ  #g
         picture: 写真  #g
         title: タイトル  #g
+  books:
+    book:
+      title: 'タイトル'
+      memo: 'メモ'
+      author: '著者'
+      picture: '写真'
+    index:
+      page_title: '本の一覧'
+      show_this_book: '本の詳細'
+      new_book: '本を登録'
