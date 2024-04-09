@@ -4,10 +4,10 @@
 <div class="index-items">
   <% @users.each do |user| %>
     <p class="index-item">
-      <%= link_to user.email, user %><br>
-      <%= user.post_code %><br>
-      <%= user.address %><br>
-      <%= user.introduction %>
+      メール：<%= link_to user.email, user %><br>
+      郵便番号：<%= user.post_code %><br>
+      住所：<%= user.address %><br>
+      自己紹介：<%= user.introduction %>
     </p>
   <% end %>
 </div>
