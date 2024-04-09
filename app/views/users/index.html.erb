@@ -1,0 +1,13 @@
+<% provide(:title, 'All users') %>
+<h1>ユーザー一覧</h1>
+
+<ul class="index-items">
+  <% @users.each do |user| %>
+    <li class="index-item">
+      <%= link_to user.email, user %><br>
+      <%= user.post_code %><br>
+      <%= user.address %><br>
+      <%= user.introduction %>
+    </li>
+  <% end %>
+</ul>
