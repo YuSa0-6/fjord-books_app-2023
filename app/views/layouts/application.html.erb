@@ -16,13 +16,13 @@
     <% if user_signed_in? %>
       <strong><%= current_user.email %>としてログインしました</strong>.
       <%= link_to "プロフィールを編集する", edit_user_registration_path, class: "navbar-link" %> |
-      <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link"  %> |
+      <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "navbar-link" %> |
       <%= link_to "ユーザー一覧", users_path, class: "navbar-link" %>|
       <%= link_to "プロフィール", user_path(current_user), class: "navbar-link" %>|
       <%= link_to "本の一覧", books_path, class: "navbar-link" %>
     <% else %>
-      <%= link_to "サインアップ", new_user_registration_path, class: "navbar-link"  %> |
-      <%= link_to "ログイン", new_user_session_path, class: "navbar-link"  %>
+      <%= link_to "サインアップ", new_user_registration_path, class: "navbar-link" %> |
+      <%= link_to "ログイン", new_user_session_path, class: "navbar-link" %>
     <% end %>
     </p>
     <%= yield %>
