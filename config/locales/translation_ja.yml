@@ -12,6 +12,11 @@ ja:
         show_this_book: この本詳細
         back_to_books: 本の一覧
         edit_page: 本を編集
+        new_page: 本の登録
+        index_page: 本の一覧
+        new_book: 本を登録
+        edit_book: 本を編集
+        destroy_book: 本を削除
   books:
     book:
       title: 'タイトル'
