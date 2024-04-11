@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module BooksApp
   class Application < Rails::Application
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :ja
     I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb, yml}')]
     I18n.available_locales = [:en, :ja]
     # Initialize configuration defaults for originally generated Rails version.

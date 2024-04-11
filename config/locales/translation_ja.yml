@@ -9,6 +9,9 @@ ja:
         memo: メモ  #g
         picture: 写真  #g
         title: タイトル  #g
+        show_this_book: この本詳細
+        back_to_books: 本の一覧
+        edit_page: 本を編集
   books:
     book:
       title: 'タイトル'
