@@ -17,6 +17,10 @@ ja:
         new_book: 本を登録
         edit_book: 本を編集
         destroy_book: 本を削除
+  notice:
+    create: 本を登録しました
+    update: 本を編集しました
+    destroy: 本を削除しました。
   books:
     book:
       title: 'タイトル'
