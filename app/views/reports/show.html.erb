@@ -1,2 +1,10 @@
-<h1>Reports#show</h1>
-<p>Find me in app/views/reports/show.html.erb</p>
+<h1><%= t('views.common.title_show', name: Report.model_name.human.downcase) %>
+
+<p>
+  <strong><%= Report.human_attribute_name(:title) %>:</strong>
+  <%= report.title %>
+</p>
+<p>
+  <strong><%= Report.human_attribute_name(:body) %>:</strong>
+  <%= report.title %>
+</p>
