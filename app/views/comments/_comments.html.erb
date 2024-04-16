@@ -10,7 +10,7 @@
               (<%= comment.user.name_or_email %><%= l(comment.created_at) %>)
             </small>
             <% if current_user == comment.user %>
-              <%= button_to 'delete', [comment.commentable, comment], method: :delete, data: {confirm: 'delete'} %>
+              <%= button_to t('views.common.destroy', name: Comment.model_name.human), [comment.commentable, comment], method: :delete, data: {confirm: t('controller.common.notice_delete', name: Comment.model_name.human)} %>
             <% end %>
           </li>
         <% end %>
