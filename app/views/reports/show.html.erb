@@ -9,4 +9,5 @@
     <%= @report.title %>
   </p>
 </div>
-<%= render 'comments/form', commnetable: @report, comment: @comment %>
+<%= render 'comments/comments', { comments: @comments } %>
+<%= render 'comments/form', commentable: @report, comment: @comment %>
