@@ -10,6 +10,7 @@
               (<%= comment.user.name_or_email %><%= l(comment.created_at) %>)
             </small>
             <% if current_user == comment.user %>
+              <%= button_to 'delete', [comment.commentable, comment], method: :delete, data: {confirm: 'delete'} %>
             <% end %>
           </li>
         <% end %>
