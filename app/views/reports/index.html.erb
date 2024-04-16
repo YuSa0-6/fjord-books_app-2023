@@ -6,4 +6,7 @@
     <%= link_to report.title, report_path(report.id) %>
   </div>
 <% end %>
+  <nav class="page-nav">
+    <%= link_to t('views.common.new', name: Report.model_name.human.downcase), new_report_path %>
+  </nav>
 </div>
