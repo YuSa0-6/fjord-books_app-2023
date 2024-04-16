@@ -1,2 +1,12 @@
-<h1>Reports#new</h1>
-<p>Find me in app/views/reports/new.html.erb</p>
+<h1><%= t('views.common.title_new', name: Report.model_name.human.downcase) %></h1>
+<%= form_for @report do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+    </p>
+  <%= f.submit %>
+<% end %>
