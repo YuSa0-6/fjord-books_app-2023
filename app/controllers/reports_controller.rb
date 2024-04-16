@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
+  before_action :ensure_current_user, only: %i[edit destroy update]
   def new
     @report = Report.new
   end
@@ -31,9 +32,12 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @report = Report.find(params[:id])
+    @report.destroy
 
-    redirect_to @commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    respond_to do |format|
+      format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)}
+    end
   end
 
   private
@@ -44,5 +48,12 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:title, :body)
+  end
+
+  def ensure_current_user
+    @report = Report.find(params[:id])
+    unless @report.user_id == current_user.id
+      redirect_to report_path(@report.id)
+    end
   end
 end
