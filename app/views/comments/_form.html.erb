@@ -1,0 +1,5 @@
+<%= form_with model: [commentable, comment] do |form| %>
+
+  <%= form.text_field :body, required: true %>
+  <%= form.submit %>
+<% end %>
