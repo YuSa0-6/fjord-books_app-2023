@@ -1,2 +1,9 @@
-<h1>Reports#index</h1>
-<p>Find me in app/views/reports/index.html.erb</p>
+<h1><%= t('views.common.title_index', name: Report.model_name.human.downcase) %></h1>
+<div class="index-items">
+
+<%= @reports.each do |report| %>
+  <div class="index-item">
+    <%= link_to report.title, report_path(report.id) %>
+  </div>
+<% end %>
+</div>
