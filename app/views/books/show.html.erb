@@ -3,6 +3,7 @@
 <div class="show-item">
   <%= render @book %>
 </div>
+<%= render 'comments/form', commentable: @book, commnet: @comment %>
 
 <nav class="page-nav">
   <%= link_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book) %> |

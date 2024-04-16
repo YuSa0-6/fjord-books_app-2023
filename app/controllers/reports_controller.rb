@@ -16,6 +16,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+    @comment = Comment.new
   end
 
   private
