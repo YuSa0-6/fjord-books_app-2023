@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
   before_action :ensure_current_user, only: %i[edit destroy update]
@@ -36,7 +38,7 @@ class ReportsController < ApplicationController
     @report.destroy
 
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)}
+      format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
     end
   end
 
@@ -52,8 +54,8 @@ class ReportsController < ApplicationController
 
   def ensure_current_user
     @report = Report.find(params[:id])
-    unless @report.user_id == current_user.id
-      redirect_to report_path(@report.id)
-    end
+    return if @report.user_id == current_user.id
+
+    redirect_to report_path(@report.id)
   end
 end
