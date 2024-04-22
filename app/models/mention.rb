@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Mention < ApplicationRecord
   # この言及元(mentioned_reports)は日報に対して一つだから
   belongs_to :mentioned_report, class_name: 'Report', inverse_of: :mentioning_mentions
