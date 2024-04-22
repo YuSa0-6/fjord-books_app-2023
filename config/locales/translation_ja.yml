@@ -9,14 +9,6 @@ ja:
         memo: メモ  #g
         picture: 写真  #g
         title: タイトル  #g
-        show_this_book: この本詳細
-        back_to_books: 本の一覧
-        edit_page: 本を編集
-        new_page: 本の登録
-        index_page: 本の一覧
-        new_book: 本を登録
-        edit_book: 本を編集
-        destroy_book: 本を削除
   notice:
     create: "%{name}を登録しました"
     update: "%{name}を編集しました"
@@ -28,19 +20,20 @@ ja:
       author: '著者'
       picture: '写真'
   views:
+    common:
+      back_to_books: '本の一覧に戻る'
+      show_this_book: '本の詳細を見る'
+      new_this_book: '本を登録する'
+      edit_this_book: '本を編集する'
+      destroy_this_book: '本を削除'
     index:
       page_title: '本の一覧'
-      show_this_book: '本の詳細'
       new_book: '本を登録'
     new:
       page_title: '新しい本'
-      back_to_books: '本一覧に戻る'
     show:
-      edit_this_book: '本を編集'
-      back_to_books: '本の一覧'
-      destroy_this_book: '本を削除'
+      page_title: '詳細画面'
     edit:
       page_title: '本を編集しています'
       show_this_book: '本の詳細'
-      back_to_books: '本の一覧'
 
