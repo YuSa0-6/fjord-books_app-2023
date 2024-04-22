@@ -28,18 +28,14 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
-  # 日報新規登録時にURIを見る
   def extract_uri_ids_save_mentions
     uri_ids = extract_uri_ids
     save_mentions(uri_ids)
   end
 
   def extract_uri_ids_update_mentions
-    # このレポートにあるIDを全件取得する
     uri_ids = extract_uri_ids
-    # このレポートからメンションされているMentionを削除する
     delete_mentions
-    # save_mentionsと同じように保存していく
     save_mentions(uri_ids)
   end
 
