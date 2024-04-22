@@ -18,15 +18,16 @@ ja:
         edit_book: 本を編集
         destroy_book: 本を削除
   notice:
-    create: 本を登録しました
-    update: 本を編集しました
-    destroy: 本を削除しました。
+    create: "%{name}を登録しました"
+    update: "%{name}を編集しました"
+    destroy: "%{name}を削除しました。"
   books:
     book:
       title: 'タイトル'
       memo: 'メモ'
       author: '著者'
       picture: '写真'
+  views:
     index:
       page_title: '本の一覧'
       show_this_book: '本の詳細'
