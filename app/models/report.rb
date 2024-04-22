@@ -52,7 +52,7 @@ class Report < ApplicationRecord
   def extract_uri_ids
     uris = URI.extract(content)
     uris.map do |uri|
-      uri.match(%r{/(\d+)$}).captures.first
+      uri.match(%r{reports/(\d+)$}).captures.first
     rescue StandardError
       nil
     end
