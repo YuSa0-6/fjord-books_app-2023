@@ -1,7 +1,7 @@
-<h1>プロフィール</h1>
+<h1><%= t('views.common.show', name: User.model_name.human) %></h1>
 <ul>
-  <li>メール: <%= @user.email %></li>
-  <li>住所: <%= @user.address %></li>
-  <li>郵便場号: <%= @user.post_code %></li>
-  <li>自己紹介文: <%= @user.introduction %></li>
+  <li><%= t('views.user.email'), name: User.model_name.human %>: <%= @user.email %></li>
+  <li><%= t('views.user.address', name: User.model_name.human) %><%= @user.address %></li>
+  <li><%= t('views.user.post_code', name: User.model_name.human) %>: <%= @user.post_code %></li>
+  <li><%= t('views.user.introduction', name: User.model_name.human) %>: <%= @user.introduction %></li>
 </ul>
