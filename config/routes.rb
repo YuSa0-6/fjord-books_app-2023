@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   end
   root to: 'books#index'
   devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations' ,
-    passwords: 'users/passwords'
+    registrations: 'users/registrations'
   }
   resources :books
   resources :users, :only => [:index, :show]
