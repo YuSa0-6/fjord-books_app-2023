@@ -9,3 +9,30 @@ en:
         memo: Memo  #g
         picture: Picture  #g
         title: Title  #g
+  notice:
+    create: "%{name} is registered"
+    update: "%{name} is edited"
+    destroy: "%{name} is destroyed"
+  books:
+    book:
+      title: 'Title'
+      memo: 'Memo'
+      author: 'Author'
+      picture: 'Picture'
+  views:
+    common:
+      back_to_books: 'Back to books'
+      show_this_book: 'Show this book'
+      new_this_book: 'New this book'
+      edit_this_book: 'Edit this book'
+      destroy_this_book: 'Destroy this book'
+    index:
+      page_title: 'Index page'
+      new_book: 'New book'
+    new:
+      page_title: 'New page'
+    show:
+      page_title: 'Show page'
+    edit:
+      page_title: 'Editing this book'
+
