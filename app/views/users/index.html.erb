@@ -1,12 +1,12 @@
-<h1>ユーザー一覧</h1>
+<h1><%= t('views.common.title_index', name: User.model_name.human) =%></h1>
 
 <div class="index-items">
   <% @users.each do |user| %>
     <p class="index-item">
-      メール：<%= link_to user.email, user %><br>
-      郵便番号：<%= user.post_code %><br>
-      住所：<%= user.address %><br>
-      自己紹介：<%= user.introduction %>
+      <%= t('views.user.email', name: User.model_name.human) =%> : <%= link_to user.email, user %><br>
+      <%= t('views.user.address', name: User.model_name.human) =%>：<%= user.post_code %><br>
+      <%= t('views.user.post_code', name: User.model_name.human) =%>：<%= user.address %><br>
+      <%= t('views.user.introduction', name: User.model_name.human) =%>：<%= user.introduction %>
     </p>
   <% end %>
 </div>

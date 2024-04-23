@@ -195,6 +195,11 @@ ja:
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
       notice_login: "%{name}としてログインしました"
+    user:
+      email: "メール"
+      post_code: "郵便番号"
+      address: "住所"
+      introduction: "自己紹介"
     pagination:
       first: '« 最初'
       last: '最後 »'
