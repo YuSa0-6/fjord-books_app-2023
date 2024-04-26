@@ -11,4 +11,9 @@ class ReportTest < ActiveSupport::TestCase
     report = user.reports.new(title: 'title', content: 'content')
     assert_equal true, report.editable?(user)
   end
+
+  test '#created_on' do
+    report = Report.new(created_at: Time.zone.local(2021, 1, 1, 12, 0, 0))
+    assert_equal Date.new(2021, 1, 1), report.created_on
+  end
 end
