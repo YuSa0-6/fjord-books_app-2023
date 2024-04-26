@@ -3,45 +3,37 @@
 require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
+  include Warden::Test::Helpers
+
   setup do
-    @report = reports(:one)
+    Warden.test_mode!
+    @user = users(:alice)
+    login_as(@user, scope: :user)
+    @report = @user.reports.create(title: '日報タイトル', content: '日報の内容')
   end
-
   test 'visiting the index' do
-    visit reports_url
-    assert_selector 'h1', text: 'Reports'
+    visit '/reports/'
+    assert_text '日報の一覧'
+  end
+  test 'create a report' do
+    visit '/reports/new'
+    fill_in 'タイトル', with: '新規日報'
+    fill_in '内容', with: '今日は晴天なり'
+    click_on '登録する'
+    assert_text '日報が作成されました。'
   end
 
-  test 'should create report' do
-    visit reports_url
-    click_on 'New report'
-
-    fill_in 'Content', with: @report.content
-    fill_in 'Title', with: @report.title
-    fill_in 'User', with: @report.user_id
-    click_on 'Create Report'
-
-    assert_text 'Report was successfully created'
-    click_on 'Back'
+  test 'update a report' do
+    visit '/reports/1/edit'
+    fill_in 'タイトル', with: '更新した日報'
+    fill_in '内容', with: '今日は雨'
+    click_on '更新する'
+    assert_text '日報が更新されました。'
   end
 
-  test 'should update Report' do
-    visit report_url(@report)
-    click_on 'Edit this report', match: :first
-
-    fill_in 'Content', with: @report.content
-    fill_in 'Title', with: @report.title
-    fill_in 'User', with: @report.user_id
-    click_on 'Update Report'
-
-    assert_text 'Report was successfully updated'
-    click_on 'Back'
-  end
-
-  test 'should destroy Report' do
-    visit report_url(@report)
-    click_on 'Destroy this report', match: :first
-
-    assert_text 'Report was successfully destroyed'
+  test 'destroy a report' do
+    visit '/reports/1'
+    click_on 'この日報を削除'
+    assert_text '日報が削除されました。'
   end
 end
