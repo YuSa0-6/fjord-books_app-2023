@@ -1,7 +1,7 @@
 <h1><%= t('views.common.show', name: User.model_name.human) %></h1>
 <ul>
-  <li><%= t('views.user.email'), name: User.model_name.human %>: <%= @user.email %></li>
-  <li><%= t('views.user.address', name: User.model_name.human) %><%= @user.address %></li>
-  <li><%= t('views.user.post_code', name: User.model_name.human) %>: <%= @user.post_code %></li>
-  <li><%= t('views.user.introduction', name: User.model_name.human) %>: <%= @user.introduction %></li>
+  <li><%= User.human_attribute_name(:email)%>: <%= @user.email %></li>
+  <li><%= User.human_attribute_name(:address) %><%= @user.address %></li>
+  <li><%= User.human_attribute_name(:post_code) %>: <%= @user.post_code %></li>
+  <li><%= User.human_attribute_name(:introduction) %>: <%= @user.introduction %></li>
 </ul>

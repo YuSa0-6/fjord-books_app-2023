@@ -13,5 +13,8 @@ ja:
       user:
         email: メールアドレス
         name: 名前
+        post_code: 郵便番号
+        address: 住所
+        introduction: 自己紹介
         password: パスワード
         password_confirmation: パスワード（確認）

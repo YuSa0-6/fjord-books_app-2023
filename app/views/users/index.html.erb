@@ -3,10 +3,10 @@
 <div class="index-items">
   <% @users.each do |user| %>
     <p class="index-item">
-      <%= t('views.user.email', name: User.model_name.human) %>:<%= link_to user.email, user %><br>
-      <%= t('views.user.address', name: User.model_name.human) %>:<%= user.post_code %><br>
-      <%= t('views.user.post_code', name: User.model_name.human) %>:<%= user.address %><br>
-      <%= t('views.user.introduction', name: User.model_name.human) %>:<%= user.introduction %>
+      <%= User.human_attribute_name(:email) %>:<%= link_to user.email, user %><br>
+      <%= User.human_attribute_name(:address) %>:<%= user.post_code %><br>
+      <%= User.human_attribute_name(:post_code) %>:<%= user.address %><br>
+      <%= User.human_attribute_name(:introduction) %>:<%= user.introduction %>
     </p>
   <% end %>
 </div>
