@@ -21,14 +21,13 @@ en:
       picture: 'Picture'
   views:
     common:
-      back_to_books: 'Back to books'
-      show_this_book: 'Show this book'
-      new_this_book: 'New this book'
-      edit_this_book: 'Edit this book'
-      destroy_this_book: 'Destroy this book'
+      back_to_books: 'Back to the list of books'
+      show_this_book: 'Book Details'
+      new_this_book: 'New book'
+      edit_this_book: 'Edit book'
+      destroy_this_book: 'Delete book'
     index:
       page_title: 'Index page'
-      new_book: 'New book'
     new:
       page_title: 'New page'
     show:
