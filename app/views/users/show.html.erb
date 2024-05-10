@@ -1,7 +1,6 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
 <div class="show-item">
-  <%= image_tag @user.avatar if @user.avatar.attached? %>
   <%= render @user %>
 </div>
 
