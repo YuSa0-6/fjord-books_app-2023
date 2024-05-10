@@ -2,6 +2,7 @@ en:
   activerecord:
     models:
       book: Book
+      user: User
 
     attributes:
       book:
@@ -9,3 +10,8 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+      user:
+        email: Email
+        name: Name
+        password: Password
+        password_confirmation: Password(Confirmation)
