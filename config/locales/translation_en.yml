@@ -1,0 +1,37 @@
+en:
+  activerecord:
+    models:
+      book: Book  #g
+
+    attributes:
+      book:
+        author: Author  #g
+        memo: Memo  #g
+        picture: Picture  #g
+        title: Title  #g
+  notice:
+    create: "%{name} is registered"
+    update: "%{name} is edited"
+    destroy: "%{name} is destroyed"
+  books:
+    book:
+      title: 'Title'
+      memo: 'Memo'
+      author: 'Author'
+      picture: 'Picture'
+  views:
+    common:
+      back_to_books: 'Back to the list of books'
+      show_this_book: 'Book Details'
+      new_this_book: 'New book'
+      edit_this_book: 'Edit book'
+      destroy_this_book: 'Delete book'
+    index:
+      page_title: 'Index page'
+    new:
+      page_title: 'New page'
+    show:
+      page_title: 'Show page'
+    edit:
+      page_title: 'Editing this book'
+

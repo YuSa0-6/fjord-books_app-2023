@@ -1,0 +1,37 @@
+ja:
+  activerecord:
+    models:
+      book: 本  #g
+
+    attributes:
+      book:
+        author: 著者  #g
+        memo: メモ  #g
+        picture: 写真  #g
+        title: タイトル  #g
+  notice:
+    create: "%{name}を登録しました"
+    update: "%{name}を編集しました"
+    destroy: "%{name}を削除しました。"
+  books:
+    book:
+      title: 'タイトル'
+      memo: 'メモ'
+      author: '著者'
+      picture: '写真'
+  views:
+    common:
+      back_to_books: '本の一覧に戻る'
+      show_this_book: '本の詳細を見る'
+      new_this_book: '本を登録する'
+      edit_this_book: '本を編集する'
+      destroy_this_book: '本を削除'
+    index:
+      page_title: '本の一覧'
+      new_book: '本を登録'
+    new:
+      page_title: '新しい本'
+    show:
+      page_title: '詳細画面'
+    edit:
+      page_title: '本を編集しています'
