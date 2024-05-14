@@ -1,7 +1,7 @@
 <h1><%= t('views.common.title_index', name: Report.model_name.human.downcase) %></h1>
 <div class="index-items">
 
-<%= @reports.each do |report| %>
+<% @reports.each do |report| %>
   <div class="index-item">
     <%= link_to report.title, report_path(report.id) %>
   </div>
