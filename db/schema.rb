@@ -60,13 +60,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_061507) do
   end
 
   create_table "mentions", force: :cascade do |t|
-    t.integer "mentioning_report_id", null: false
-    t.integer "mentioned_report_id", null: false
+    t.integer "mentioning_report_id_id", null: false
+    t.integer "mentioned_report_id_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["mentioned_report_id"], name: "index_mentions_on_mentioned_report_id"
-    t.index ["mentioning_report_id", "mentioned_report_id"], name: "index_mentions_on_mentioning_report_id_and_mentioned_report_id", unique: true
-    t.index ["mentioning_report_id"], name: "index_mentions_on_mentioning_report_id"
+    t.index "\"mentioned_report_id\"", name: "index_mentions_on_mentioned_report_id"
+    t.index "\"mentioning_report_id\"", name: "index_mentions_on_mentioning_report_id"
+    t.index "\"mentioning_report_id\", \"mentioned_report_id\"", name: "index_mentions_on_mentioning_report_id_and_mentioned_report_id", unique: true
+    t.index ["mentioned_report_id_id"], name: "index_mentions_on_mentioned_report_id_id"
+    t.index ["mentioning_report_id_id"], name: "index_mentions_on_mentioning_report_id_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -97,5 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_061507) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
+  add_foreign_key "mentions", "mentioned_report_ids"
+  add_foreign_key "mentions", "mentioning_report_ids"
   add_foreign_key "reports", "users"
 end
