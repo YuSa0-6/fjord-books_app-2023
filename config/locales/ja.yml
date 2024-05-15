@@ -194,8 +194,6 @@ ja:
       title_edit: "%{name}の編集"
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
-      notice_login: "%{name}としてログインしました"
-      forget_password?: "パスワードを忘れましたか？"
       reset_password: "パスワードをリセットする"
       change_your_password: "パスワードの変更"
       characters_minimum: "文字が最低限です"
@@ -203,6 +201,7 @@ ja:
       sign_up: "サインアップ"
       receive_confirm_instructions?: "確認の指示を受け取っていませんか？"
       receive_unlock_instructions?: "ロック解除の手順を受け取っていませんか？"
+      notice_login: "ログインしました"
     user:
       email: "メール"
       post_code: "郵便番号"
