@@ -20,7 +20,7 @@ class Report < ApplicationRecord
   end
 
   def other_report?(uri_id)
-    uri_id.to_i != id.to_i
+    uri_id.to_i != id
   end
 
   def created_on
