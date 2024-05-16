@@ -8,7 +8,7 @@ class Report < ApplicationRecord
   has_many :mentioned_reports, through: :mentioning_mentions, source: :mentioned_report
 
   has_many :mentioned_mentions, class_name: 'Mention', foreign_key: :mentioned_report_id, dependent: :destroy, inverse_of: :mentioning_report
-  has_many :mentioned_reports, through: :mentioned_mentions, source: :mentioning_report
+  has_many :mentioning_reports, through: :mentioned_mentions, source: :mentioning_report
 
   validates :title, presence: true
   validates :content, presence: true
@@ -29,7 +29,7 @@ class Report < ApplicationRecord
 
   def update_mentions
     uri_ids = extract_uri_ids
-    delete_mentions
+    mentioned_reports.destroy_all
     save_mentions(uri_ids)
   end
 
@@ -39,10 +39,6 @@ class Report < ApplicationRecord
 
       Mention.new(mentioned_report_id: uri_id, mentioning_report_id: id).save
     end
-  end
-
-  def delete_mentions
-    Mention.where(mentioning_report_id: id).find_each(&:destroy)
   end
 
   def extract_uri_ids
