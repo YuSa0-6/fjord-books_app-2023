@@ -1,8 +1,8 @@
 class CreateMentions < ActiveRecord::Migration[7.0]
   def change
     create_table :mentions do |t|
-      t.references :mentioning_report_id, null:false, foreign_key: true
-      t.references :mentioned_report_id,  null:false, foreign_key: true
+      t.integer :mentioning_report_id, null:false, foreign_key: { to_table: :reports }
+      t.integer :mentioned_report_id,  null:false, foreign_key: { to_table: :reports }
       t.timestamps
 
       t.index :mentioning_report_id
