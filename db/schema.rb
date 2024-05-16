@@ -97,5 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_18_061507) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
+  add_foreign_key "mentions", "reports", column: "mentioned_report_id"
+  add_foreign_key "mentions", "reports", column: "mentioning_report_id"
   add_foreign_key "reports", "users"
 end
