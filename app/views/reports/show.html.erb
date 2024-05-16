@@ -6,7 +6,7 @@
 
 <strong>mentioned_reports</strong>
 <div class="index-items">
-  <% @report.mentioned_reports.each do |report| %>
+  <% @report.mentioned_reports.order(:id).each do |report| %>
     <div class="index-item">
       <%= link_to report.title, report %>
     </div>
