@@ -44,9 +44,7 @@ class Report < ApplicationRecord
   def extract_uri_ids
     uris = URI.extract(content)
     uris.map do |uri|
-      uri.match(%r{reports/(\d+)$}).captures.first
-    rescue StandardError
-      nil
+      uri.match(%r{http://localhost:3000/reports/(\d+)$}).captures.first
     end
   end
 end
