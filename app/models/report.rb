@@ -15,7 +15,7 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  after_save :update_mentions
+  after_save :save_mentions
 
   def editable?(target_user)
     user == target_user
@@ -29,7 +29,7 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
-  def update_mentions
+  def save_mentions
     uri_ids = extract_uri_ids
     mentioned_reports.destroy_all
     save_mentions(uri_ids)
