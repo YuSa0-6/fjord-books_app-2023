@@ -7,8 +7,8 @@ class ReportTest < ActiveSupport::TestCase
   #   assert true
   # end
   test '#editable?' do
-    user = User.new(email: 'test@sample.com', password: 'password')
-    report = user.reports.new(title: 'title', content: 'content')
+    user = users(:alice)
+    report = user.reports.new(reports(:report_alice).attributes)
     assert_equal true, report.editable?(user)
   end
 
