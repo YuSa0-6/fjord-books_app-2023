@@ -10,7 +10,7 @@ class Report < ApplicationRecord
 
   has_many :mentioned_mentions, class_name: 'Mention', foreign_key: :mentioned_report_id,
                                 dependent: :destroy
-  has_many :mentioning_reports, through: :mentioned_mentions, source: :mentioned_report
+  has_many :mentioning_reports, through: :mentioned_mentions, source: :mentioning_report
 
   validates :title, presence: true
   validates :content, presence: true
@@ -32,15 +32,16 @@ class Report < ApplicationRecord
   def save_mentions
     uri_ids = extract_uri_ids
     mentioned_reports.destroy_all
-    save_mentions(uri_ids)
+    create_mentions(uri_ids)
   end
 
-  def save_mentions(uri_ids)
-    uri_ids.each do |uri_id|
-      next unless other_report?(uri_id)
+  def create_mentions(uri_ids)
+    transaction do
+      uri_ids.each do |uri_id|
+        next unless other_report?(uri_id)
 
-      # Mention.new(mentioned_report_id: uri_id, mentioning_report_id: id).save
-      mentioned_mentions.new(mentioning_report_id: uri_id).save!
+        mentioned_mentions.new(mentioning_report_id: uri_id).save!
+      end
     end
   end
 
