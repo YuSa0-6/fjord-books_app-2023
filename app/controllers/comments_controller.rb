@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  before_action :ensure_editor, only: destroy
+
   def create
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
@@ -23,5 +25,10 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def ensure_editor
+    @comment = Comment.find(params[:id])
+    redirect_to commentable_path(@comment.commentable_id) if @comment.user_id != current_user.id
   end
 end

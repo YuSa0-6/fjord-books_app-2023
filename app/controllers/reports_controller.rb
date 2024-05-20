@@ -54,8 +54,6 @@ class ReportsController < ApplicationController
 
   def ensure_editor
     @report = Report.find(params[:id])
-    return if @report.user_id == current_user.id
-
-    redirect_to report_path(@report.id)
+    redirect_to report_path(@report.id) if @report.user_id != current_user.id
   end
 end
