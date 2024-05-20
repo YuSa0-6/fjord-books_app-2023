@@ -32,11 +32,16 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'update a report' do
-    visit '/reports/1/edit'
+    login_as(users(:alice))
+    report = reports(:report_alice)
+    report.save!
+    visit "/reports/#{report.id}/edit"
     fill_in 'タイトル', with: '更新した日報'
     fill_in '内容', with: '今日は雨'
     click_on '更新する'
     assert_text '日報が更新されました。'
+    assert_text '更新した日報'
+    assert_text '今日は雨'
   end
 
   test 'destroy a report' do
