@@ -2,7 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
-  before_action :ensure_current_user, only: %i[edit destroy update]
+  before_action :ensure_editor, only: %i[edit destroy update]
   def new
     @report = Report.new
   end
@@ -51,7 +51,7 @@ class ReportsController < ApplicationController
     params.require(:report).permit(:title, :body)
   end
 
-  def ensure_current_user
+  def ensure_editor
     @report = Report.find(params[:id])
     return if @report.user_id == current_user.id
 
