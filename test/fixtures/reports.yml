@@ -3,8 +3,8 @@ report_alice:
   content: This is the first report.
   user: alice
 
-report_bob:
+report_guest:
   title: Report 2
   content: This is the second report.
-  user: bob
+  user: guest
 

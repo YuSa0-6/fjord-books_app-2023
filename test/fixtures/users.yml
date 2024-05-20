@@ -3,7 +3,7 @@ alice:
   name: 'Alice'
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
-bob:
-  email: 'bob@sample.com'
-  name: 'Bob'
+guest:
+  email: 'guest@sample.com'
+  name: ''
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

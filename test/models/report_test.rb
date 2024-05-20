@@ -6,10 +6,16 @@ class ReportTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-  test '#editable?' do
+  test '#editable? with same user' do
     user = users(:alice)
-    report = user.reports.new(reports(:report_alice).attributes)
+    report = reports(:report_alice)
     assert_equal true, report.editable?(user)
+  end
+
+  test '#editable? with other user' do
+    user = users(:guest)
+    report = reports(:report_alice)
+    assert_equal false, report.editable?(user)
   end
 
   test '#created_on' do
