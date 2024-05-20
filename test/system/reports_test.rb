@@ -45,8 +45,12 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'destroy a report' do
-    visit '/reports/1'
+    login_as(users(:alice))
+    report = reports(:report_alice)
+    report.save!
+    visit "/reports/#{report.id}"
     click_on 'この日報を削除'
     assert_text '日報が削除されました。'
+    assert_equal true, Report.where(id: report.id).empty?
   end
 end
