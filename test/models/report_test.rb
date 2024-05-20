@@ -22,4 +22,15 @@ class ReportTest < ActiveSupport::TestCase
     report = Report.new(created_at: Time.zone.local(2021, 1, 1, 12, 0, 0))
     assert_equal Date.new(2021, 1, 1), report.created_on
   end
+  test '#save_mentions with mentioning_reports' do
+    report = reports(:report_alice)
+    created_report = Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{report.id}")
+    assert_equal report.id, created_report.mentioning_reports.first.id
+  end
+
+  test '#save_mentions with mentioned_reports' do
+    report = reports(:report_alice)
+    created_report = Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{report.id}")
+    assert_equal created_report.id, report.mentioned_reports.first.id
+  end
 end
