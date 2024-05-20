@@ -9,7 +9,14 @@ class ReportsTest < ApplicationSystemTestCase
     Warden.test_mode!
     @user = users(:alice)
     login_as(@user, scope: :user)
-    @report = @user.reports.create(title: '日報タイトル', content: '日報の内容')
+  end
+  test 'login' do
+    logout(:user)
+    visit '/'
+    fill_in 'Eメール', with: @user.email
+    fill_in 'パスワード', with: 'password'
+    click_on 'ログイン'
+    assert_text 'ログインしました。'
   end
   test 'visiting the index' do
     visit '/reports/'
