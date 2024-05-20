@@ -4,14 +4,11 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   include Warden::Test::Helpers
-
   setup do
     Warden.test_mode!
     @user = users(:alice)
-    login_as(@user, scope: :user)
   end
   test 'login' do
-    logout(:user)
     visit '/'
     fill_in 'Eメール', with: @user.email
     fill_in 'パスワード', with: 'password'
@@ -19,15 +16,19 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text 'ログインしました。'
   end
   test 'visiting the index' do
+    login_as(users(:alice))
     visit '/reports/'
     assert_text '日報の一覧'
   end
   test 'create a report' do
+    login_as(users(:alice))
     visit '/reports/new'
     fill_in 'タイトル', with: '新規日報'
     fill_in '内容', with: '今日は晴天なり'
     click_on '登録する'
     assert_text '日報が作成されました。'
+    assert_text '新規日報'
+    assert_text '今日は晴天なり'
   end
 
   test 'update a report' do
