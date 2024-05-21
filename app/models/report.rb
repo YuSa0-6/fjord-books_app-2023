@@ -21,10 +21,6 @@ class Report < ApplicationRecord
     user == target_user
   end
 
-  def other_report?(uri_id)
-    uri_id.to_i != id
-  end
-
   def created_on
     created_at.to_date
   end
@@ -38,7 +34,7 @@ class Report < ApplicationRecord
   def create_mentions(uri_ids)
     transaction do
       uri_ids.each do |uri_id|
-        next unless other_report?(uri_id)
+        next if uri_id.to_i == id
 
         mentioned_mentions.new(mentioning_report_id: uri_id).save!
       end
