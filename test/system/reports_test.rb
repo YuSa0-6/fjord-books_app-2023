@@ -51,6 +51,7 @@ class ReportsTest < ApplicationSystemTestCase
     visit "/reports/#{report.id}"
     click_on 'この日報を削除'
     assert_text '日報が削除されました。'
-    assert_equal true, Report.where(id: report.id).empty?
+    assert_no_text report.title
+    assert_no_text report.content
   end
 end
