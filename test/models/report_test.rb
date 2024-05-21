@@ -33,4 +33,27 @@ class ReportTest < ActiveSupport::TestCase
     created_report = Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{report.id}")
     assert_equal created_report.id, report.mentioned_reports.first.id
   end
+
+  test '#multiple save_mentions' do
+    Report.create!(user: users(:guest), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
+    Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
+    assert_equal 2, reports(:report_alice).mentioned_reports.count
+  end
+
+  test '#save_mentions with invalid URL' do
+    created_report = Report.create!(user: users(:alice), title: 'title', content: 'http://localhost:3000/reports/xxxx')
+    assert_equal 0, created_report.mentioning_reports.count
+  end
+
+  test '#delete_mentions' do
+    report = Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
+    report.destroy
+    assert_equal 0, reports(:report_alice).mentioned_reports.count
+  end
+  test '#update_mentions' do
+    Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
+    updated_report = Report.find_by(title: 'title')
+    updated_report.update!(title: 'title', content: "http://localhost:3000/reports/#{reports(:report_guest).id}")
+    assert_equal updated_report.id, reports(:report_guest).mentioned_reports.first.id
+  end
 end
