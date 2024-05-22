@@ -24,6 +24,8 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
+  private
+
   def save_mentions
     uri_ids = extract_uri_ids
     mentioned_reports.destroy_all
