@@ -27,13 +27,12 @@ class Report < ApplicationRecord
   private
 
   def save_mentions
-    uri_ids = extract_uri_ids
-    mentioned_reports.destroy_all
-    create_mentions(uri_ids)
+    mentioning_reports.destroy_all
+    create_mentions
   end
 
-  def create_mentions(uri_ids)
-    uri_ids.each do |uri_id|
+  def create_mentions
+    extract_uri_ids.each do |uri_id|
       next if uri_id.to_i == id
 
       active_mentions.create!(mentioning_report_id: uri_id)
