@@ -33,12 +33,10 @@ class Report < ApplicationRecord
   end
 
   def create_mentions(uri_ids)
-    transaction do
-      uri_ids.each do |uri_id|
-        next if uri_id.to_i == id
+    uri_ids.each do |uri_id|
+      next if uri_id.to_i == id
 
-        mentions_from.new(mentioning_report_id: uri_id).save!
-      end
+      active_mentions.create!(mentioning_report_id: uri_id)
     end
   end
 
