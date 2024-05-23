@@ -4,8 +4,15 @@
   <%= render @report %>
 </div>
 
+<strong>mentioned_reports</strong>
+<div class="index-items">
+  <% @report.mentioned_reports.order(:id).each do |report| %>
+    <div class="index-item">
+      <%= link_to report.title, report %>
+    </div>
+  <% end %>
+</div>
 <%= render 'shared/comments', commentable: @report %>
-
 <nav class="page-nav">
   <% if @report.editable?(current_user) %>
     <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
