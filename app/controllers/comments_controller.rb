@@ -29,6 +29,6 @@ class CommentsController < ApplicationController
 
   def ensure_editor
     @comment = Comment.find(params[:id])
-    redirect_to commentable_path(@comment.commentable_id) if @comment.user_id != current_user.id
+    redirect_to @comment.commentable, notice: t('controllers.common.notice_no_permit', name: Comment.model_name.human) if @comment.user_id != current_user.id
   end
 end
