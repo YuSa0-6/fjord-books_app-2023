@@ -8,8 +8,7 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = Report.new(report_params)
-    @report.user_id = current_user.id
+    @report = current_user.reports.create!(report_params)
     @report.save
     redirect_to reports_path
   end
