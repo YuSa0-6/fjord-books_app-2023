@@ -51,21 +51,18 @@ class ReportTest < ActiveSupport::TestCase
     assert_equal 0, reports(:report_alice).mentioned_reports.count
   end
   test '#update_mentions' do
-    Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
-    updated_report = Report.find_by(title: 'title')
-    updated_report.update!(title: 'title', content: "http://localhost:3000/reports/#{reports(:report_guest).id}")
-    assert_equal updated_report.id, reports(:report_guest).mentioned_reports.first.id
+    report = Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
+    report.update!(title: 'title', content: "http://localhost:3000/reports/#{reports(:report_guest).id}")
+    assert_equal report.id, reports(:report_guest).mentioned_reports.first.id
   end
   test '#update_mentions with multiple URLs' do
-    Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
-    updated_report = Report.find_by(title: 'title')
-    updated_report.update!(title: 'title', content: "http://localhost:3000/reports/#{reports(:report_guest).id} http://localhost:3000/reports/#{reports(:report_alice2).id}")
-    assert_equal updated_report.id, reports(:report_guest).mentioned_reports.first.id
+    report = Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
+    report.update!(title: 'title', content: "http://localhost:3000/reports/#{reports(:report_guest).id} http://localhost:3000/reports/#{reports(:report_alice2).id}")
+    assert_equal report.id, reports(:report_guest).mentioned_reports.first.id
   end
   test '#update_mentions with deleted URL' do
-    Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
-    updated_report = Report.find_by(title: 'title')
-    updated_report.update!(title: 'title', content: 'deleted links')
+    report = Report.create!(user: users(:alice), title: 'title', content: "http://localhost:3000/reports/#{reports(:report_alice).id}")
+    report.update!(title: 'title', content: 'deleted links')
     assert_equal 0, reports(:report_alice).mentioned_reports.count
   end
 end
