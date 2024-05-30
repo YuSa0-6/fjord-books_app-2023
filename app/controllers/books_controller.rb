@@ -5,13 +5,13 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.order(:id).page(params[:page])
+    @books = Book.order(:id).page(params[:page]).preload(:comments)
   end
 
   # GET /books/1 or /books/1.json
   def show
     @comment = Comment.new
-    @comments = @book.comments.order(:id)
+    @comments = @book.comments.order(:id).preload(:user)
   end
 
   # GET /books/new

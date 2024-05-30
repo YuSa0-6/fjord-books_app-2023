@@ -16,12 +16,12 @@ class ReportsController < ApplicationController
   def edit; end
 
   def index
-    @reports = Report.all
+    @reports = Report.all.preload(:comments).order(:id)
   end
 
   def show
     @comment = Comment.new
-    @comments = @report.comments.order(:id)
+    @comments = @report.comments.order(:id).preload(:user)
   end
 
   def update
