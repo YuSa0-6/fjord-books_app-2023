@@ -2,17 +2,13 @@
 
 FactoryBot.define do
   factory :user do
+    sequence(:id) { |n| n }
+    sequence(:name) { |n| "user#{n}" }
+    sequence(:email) { |n| "sample#{n}@example.com" }
     password { 'password' }
   end
 
-  trait :alice do
-    name { 'Alice' }
-    email { 'alice@example.com' }
-  end
-
-  trait :guest do
+  trait :no_name_user do
     name { '' }
-    email { 'guest@example.com' }
-    password { 'password' }
   end
 end
