@@ -3,20 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before do
-    @alice = FactoryBot.build(:user, :alice)
-    @guest = FactoryBot.build(:user, :guest)
-  end
-
   describe 'name_or_email' do
-    context 'name exists' do
-      it 'returns name' do
-        expect(@alice.name) == @alice.name_or_email
+    context 'ユーザーに名前がある時' do
+      it 'nameを返す' do
+        user = FactoryBot.build(:user)
+        expect(user.name_or_email).to eq user.name
       end
     end
-    context 'name does not exists' do
-      it 'returns email' do
-        expect(@guest.email) == @guest.name_or_email
+    context 'ユーザーに名前がない時' do
+      it 'emailを返す' do
+        no_name_user = FactoryBot.build(:user, :no_name_user)
+        expect(no_name_user.name_or_email).to eq no_name_user.email
       end
     end
   end
